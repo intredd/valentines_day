@@ -309,6 +309,7 @@ body {
     left: 10.5vw;
     z-index: 6000;
     cursor: pointer;
+    display: none;
 }
 
   .certificate {
