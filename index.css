@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.heart {
+    height: 90vh;
+    position: absolute;
+    z-index: 100;
+}
+
+.floating-gif {
+
+    z-index: 200;
+}
+
+.container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sparkle-text {
+  position: relative;
+  display: inline-block;
+  color: white;
+  font-family: "Yellowtail", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 6vw;
+  text-wrap: nowrap;
+}
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 0.25vw;
+  height: 0.25vw;
+  border-radius: 50%;
+  background: white;
+  opacity: 0;
+  transform: scale(0);
+  filter: blur(0.5px);
+  z-index: 1000;
+}
+
+.sparkle.animate {
+  animation: twinkle 1.2s ease-out forwards;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.answer {
+    box-sizing: border-box;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.answer:hover {
+    transform: scale(1.2);
+}
+
+.answer:nth-of-type(1) {
+    width: 25vw;
+    height: 17vw;
+    z-index: 1000;
+}
+
+.answer:nth-of-type(2) {
+    width: 17vw;
+    height: 11vw;
+    z-index: 900;
+}
+
+.answer:nth-of-type(2):hover {
+    transform: scale(0.6);
+}
+
+.answer-bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.answer-text {
+  font-family: "Yellowtail", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.5vw;
+  text-wrap: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.answer:nth-of-type(1) .cls-1 {
+    fill: #FFC0CB;
+}
+
+.answer:nth-of-type(2) .cls-1 {
+    fill: #FF7F7F;
+}
+
+.certificate-overflow {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0);
+}
+
+.print-button {
+    width: 2.5vw;
+    height: 2.5vw;
+    position: absolute;
+    top: calc(10vh + 2.5vw);
+    left: 12.5vw;
+    z-index: 6000;
+    cursor: pointer;
+}
+
+.print-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.certificate {
+    box-sizing: border-box;
+    width: 80vw;
+    height: 80vh;
+    padding: 2.5vw;
+    border-radius: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Delius", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+    text-align: center;
+    position: relative;
+}
+
+.certificate-bg {
+    width: 100%;
+    height: 100%;
+    filter: blur(3px);
+    border-radius: 2.5vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+}
+
+.certificate *:not(.certificate-bg) {
+    z-index: 5100;
+}
+
+.certificate h1 {
+    font-size: 5vw;
+}
+
+.certificate h2 {
+    margin-top: 3vw;
+    font-size: 2vw;
+}
+
+.certificate h3 {
+    font-family: "Yellowtail", cursive;
+    margin-top: 1vw;
+    font-size: 2vw;
+}
+
+.certificate p {
+    position: absolute;
+    bottom: 2.5vw;
+    right: 2.5vw;
+    font-size: 2vw;
+}
+
+.certificate p span{
+    font-family: "Yellowtail", cursive;
+}
+
+
+/* iPhone 12 / 13 / 14 */
+@media (max-width: 430px) {
+
+  body {
+    overflow: hidden;
+  }
+
+  .heart {
+    height: 75vh;
+  }
+
+  .container {
+    top: 28%;
+    width: 90%;
+  }
+
+  /* ===== Текст ===== */
+
+  .sparkle-text {
+    font-size: 10vw; /* было 6vw */
+  }
+
+  .answer-text {
+    font-size: 6vw; /* было 2.5vw */
+  }
+
+  /* ===== Кнопки ===== */
+
+  .answer:nth-of-type(1) {
+    width: 70vw;
+    height: 48vw;
+  }
+
+  .answer:nth-of-type(2) {
+    width: 48vw;
+    height: 32vw;
+  }
+
+  .answer:hover {
+    transform: scale(1.05);
+  }
+
+  .answer:nth-of-type(2):hover {
+    transform: scale(0.9);
+  }
+
+  /* ===== Sparkles ===== */
+
+  .sparkle {
+    width: 1.2vw;
+    height: 1.2vw;
+  }
+
+  /* ===== Certificate ===== */
+
+
+
+.print-button {
+    width: 6vw;
+    height: 6vw;
+    position: absolute;
+    top: calc(10vh + 6vw);
+    left: 10.5vw;
+    z-index: 6000;
+    cursor: pointer;
+}
+
+  .certificate {
+    width: 92vw;
+    height: 80vh;
+    padding: 6vw;
+  }
+
+  .certificate h1 {
+    font-size: 10vw;
+  }
+
+  .certificate h2 {
+    margin-top: 6vw;
+    font-size: 5vw;
+  }
+
+  .certificate h3 {
+    margin-top: 3vw;
+    font-size: 6vw;
+  }
+
+  .certificate p {
+    font-size: 4.5vw;
+    bottom: 5vw;
+    right: 5vw;
+  }
+
+  .certificate-bg {
+    border-radius: 6vw;
+  }
+}
+
+
+@media print {
+  /* Скрываем всё */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Показываем только сертификат */
+  .certificate,
+  .certificate * {
+    visibility: visible;
+  }
+
+  .certificate {
+    width: 100vw;
+    height: auto;
+    aspect-ratio: 16/9;
+    border: 2px solid black;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  @page {
+    margin: 0;  /* убираем поля принтера */
+  }
+}
+
