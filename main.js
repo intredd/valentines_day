@@ -135,8 +135,13 @@ const addAnswers = () => {
 
 const addGifs = () => {
     const numGifs = 7;
-    const gifWidth = 100; // ширина GIF
-    const gifHeight = 100; // высота GIF
+    let gifWidth = 100; // ширина GIF
+    let gifHeight = 100; // высота GIF
+    const screenWidth = window.innerWidth;
+    if(screenWidth < 500){ 
+        gifWidth = 100;
+        gifHeight = 100;
+    }
     const container = document.querySelector('.container');
 
     const gifs = [];
