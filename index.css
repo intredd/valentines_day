@@ -3,9 +3,16 @@
     padding: 0;
 }
 
+html {
+    width: 100vw;
+    height: 100svh;
+    overflow: hidden;
+
+}
+
 body {
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     position: relative;
     display: flex;
     justify-content: center;
