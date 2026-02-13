@@ -32,7 +32,7 @@ body {
 }
 
 .floating-gif {
-
+    pointer-events: none;
     z-index: 200;
 }
 
