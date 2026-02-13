@@ -139,8 +139,8 @@ const addGifs = () => {
     let gifHeight = 100; // высота GIF
     const screenWidth = window.innerWidth;
     if(screenWidth < 500){ 
-        gifWidth = 100;
-        gifHeight = 100;
+        gifWidth = 50;
+        gifHeight = 50;
     }
     const container = document.querySelector('.container');
 
