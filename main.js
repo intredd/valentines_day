@@ -135,67 +135,50 @@ const addAnswers = () => {
 
 const addGifs = () => {
     const numGifs = 7;
-    let gifWidth = 100; // ширина GIF
-    let gifHeight = 100; // высота GIF
-    const screenWidth = window.innerWidth;
-    if(screenWidth < 500){ 
+
+    const bgRect = bg.getBoundingClientRect();
+    let gifWidth = 150;
+    let gifHeight = 150;
+
+    // адаптация для мобильных
+    if(window.innerWidth < 500){
         gifWidth = 50;
         gifHeight = 50;
     }
-    const container = document.querySelector('.container');
 
     const gifs = [];
+    const placedRects = [];
 
-    for (let i = 1; i <= numGifs; i++) {
+    for(let i = 1; i <= numGifs; i++){
         const img = document.createElement('img');
         img.src = `./gif${i}.gif`;
         img.classList.add('floating-gif');
         img.style.width = gifWidth + 'px';
         img.style.height = gifHeight + 'px';
         img.style.position = 'absolute';
-        bg.appendChild(img);
-        gifs.push(img);
-    }
 
-    function randomPosition(existingRects = []) {
-        const bgRect = bg.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
-        
-        let x, y, rect, overlap, collidesContainer;
-        
+        // ищем случайную позицию без пересечений с уже поставленными GIF
+        let x, y, rect, overlap;
         do {
             x = Math.random() * (bgRect.width - gifWidth);
             y = Math.random() * (bgRect.height - gifHeight);
             rect = {x, y, width: gifWidth, height: gifHeight};
-            
-            // проверка на пересечение с контейнером
-            collidesContainer = !(
-                rect.x + rect.width < containerRect.left ||
-                rect.x > containerRect.right ||
-                rect.y + rect.height < containerRect.top ||
-                rect.y > containerRect.bottom
-            );
-            
-            // проверка на пересечение с другими GIF
-            overlap = existingRects.some(r => !(
+
+            overlap = placedRects.some(r => !(
                 rect.x + rect.width < r.x ||
                 rect.x > r.x + r.width ||
                 rect.y + rect.height < r.y ||
                 rect.y > r.y + r.height
             ));
-        } while (collidesContainer || overlap);
-        
-        existingRects.push(rect);
-        return rect;
-    }
+        } while(overlap);
 
+        placedRects.push(rect);
 
-    const placedRects = [];
-    gifs.forEach(img => {
-        const {x, y} = randomPosition(placedRects);
         img.style.left = x + 'px';
         img.style.top = y + 'px';
-    });
+        bg.appendChild(img);
+        gifs.push(img);
+    }
 }
 
 document
