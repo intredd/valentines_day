@@ -340,6 +340,7 @@ body {
 
   .certificate-bg {
     border-radius: 6vw;
+    filter: blur(2px);
   }
 }
 
