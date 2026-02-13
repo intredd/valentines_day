@@ -210,6 +210,7 @@ body {
     top: 0;
     left: 0;
     z-index: 5000;
+    object-fit: cover;
 }
 
 .certificate *:not(.certificate-bg) {
